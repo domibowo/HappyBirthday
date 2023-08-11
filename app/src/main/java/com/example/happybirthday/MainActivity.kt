@@ -60,9 +60,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCard(modifier: Modifier = Modifier) {
     val image = painterResource(id = R.drawable.android_logo)
-    val configuration = LocalConfiguration.current
-    Column(Modifier.fillMaxSize()) {
-        Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize().background(color = Color(color = 0xff9cd996)),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceAround
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Image(
                 painter = image, contentDescription = "logo",
                 modifier = modifier
@@ -75,19 +82,22 @@ fun BusinessCard(modifier: Modifier = Modifier) {
                     fontSize = 30.sp,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.Serif
+                    fontFamily = FontFamily.Serif,
+                    color = Color(0xFF0b3b0b)
                 )
                 Text(
                     text = "Android Masterpiece",
                     textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.Serif,
+                    color = Color(0xFF0b3b0b)
                 )
             }
         }
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(start = configuration.screenWidthDp.dp / 3)
+                .padding(horizontal = 50.dp),
         ) {
             ContactInfo(
                 icon = Icons.Filled.Phone,
@@ -95,11 +105,11 @@ fun BusinessCard(modifier: Modifier = Modifier) {
             )
             ContactInfo(
                 icon = Icons.Filled.Share,
-                info = "@AndroidDev"
+                info = "@dah"
             )
             ContactInfo(
                 icon = Icons.Filled.Email,
-                info = "jon.du@email.com"
+                info = "john.doe@email.com"
             )
         }
     }
@@ -114,7 +124,11 @@ fun ContactInfo(modifier: Modifier = Modifier, icon: ImageVector, info: String) 
             tint = Color(0xFF0b3b0b),
             modifier = modifier.padding(horizontal = 20.dp)
         )
-        Text(text = info)
+        Text(
+            text = info,
+            color = Color(0xFF0b3b0b),
+            fontWeight = FontWeight.W500
+        )
     }
 }
 
